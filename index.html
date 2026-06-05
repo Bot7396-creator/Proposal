@@ -1,6 +1,7 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,13 +26,15 @@ body{
     align-items:center;
 
     background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+
     color:white;
     position:relative;
 }
 
-/* MAIN CARD */
+/* CARD */
 
 .card{
+
     width:90%;
     max-width:520px;
 
@@ -49,7 +52,7 @@ body{
 
     z-index:10;
 
-    transition:all 0.5s ease;
+    transition:0.5s ease;
 }
 
 /* TEXT */
@@ -77,14 +80,17 @@ p{
 /* BUTTONS */
 
 button{
+
     padding:13px 24px;
 
     border:none;
+
     border-radius:25px;
 
     margin:12px;
 
     font-size:16px;
+
     font-weight:bold;
 
     cursor:pointer;
@@ -100,17 +106,19 @@ button:hover{
 }
 
 .yes{
+
     background:#00c853;
+
     color:white;
 
     box-shadow:0 0 15px rgba(0,200,83,0.6);
 }
 
 .no{
-    background:#d50000;
-    color:white;
 
-    position:relative;
+    background:#d50000;
+
+    color:white;
 
     box-shadow:0 0 15px rgba(213,0,0,0.5);
 }
@@ -118,34 +126,20 @@ button:hover{
 /* FLOATING ITEMS */
 
 .heart,
-.rose,
-.flower{
+.rose{
+
     position:absolute;
 
-    animation:floatUp linear forwards;
-
     pointer-events:none;
-}
 
-/* HEARTS */
+    animation: floatUp linear forwards;
+}
 
 .heart{
     color:#ff4d6d;
 }
 
-/* ROSES */
-
-.rose{
-    font-size:30px;
-}
-
-/* FLOWERS */
-
-.flower{
-    font-size:26px;
-}
-
-/* FLOAT ANIMATION */
+/* FLOATING ANIMATION */
 
 @keyframes floatUp{
 
@@ -160,9 +154,10 @@ button:hover{
     }
 }
 
-/* FIREWORK SPARKS */
+/* FIREWORKS */
 
 .spark{
+
     position:absolute;
 
     width:10px;
@@ -170,9 +165,7 @@ button:hover{
 
     border-radius:50%;
 
-    animation:boom 1s linear forwards;
-
-    pointer-events:none;
+    animation: boom 1s linear forwards;
 }
 
 @keyframes boom{
@@ -188,10 +181,11 @@ button:hover{
     }
 }
 
-/* GLOWING MESSAGE */
+/* FINAL GLOW */
 
 .final-message{
-    animation:glow 1.5s infinite alternate;
+
+    animation: glow 1.5s infinite alternate;
 }
 
 @keyframes glow{
@@ -220,7 +214,6 @@ button:hover{
     }
 
     button{
-        padding:12px 20px;
         font-size:15px;
     }
 }
@@ -236,7 +229,7 @@ button:hover{
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MAIN CARD -->
+<!-- CARD -->
 
 <div class="card" id="box">
 
@@ -265,7 +258,9 @@ function startMusic(){
     const music = document.getElementById("song");
 
     music.play().catch(() => {
-        console.log("Autoplay blocked");
+
+        console.log("Music autoplay blocked");
+
     });
 }
 
@@ -369,34 +364,59 @@ function finalStep(){
    MOVING NO BUTTON
 ========================= */
 
-let noBtn;
-
 function setupNo(id){
 
-    noBtn = document.getElementById(id);
+    const noBtn = document.getElementById(id);
 
-    noBtn.addEventListener("mouseover", moveNo);
+    function moveNo(){
 
-    noBtn.addEventListener("click", moveNo);
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
 
-    noBtn.addEventListener("touchstart", moveNo);
-}
+        const maxX =
+            window.innerWidth - btnWidth - 20;
 
-function moveNo(){
+        const maxY =
+            window.innerHeight - btnHeight - 20;
 
-    let x =
-        Math.random() *
-        (window.innerWidth - 140);
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
 
-    let y =
-        Math.random() *
-        (window.innerHeight - 80);
+        noBtn.style.position = "fixed";
 
-    noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
 
-    noBtn.style.left = x + "px";
+        noBtn.style.zIndex = "999";
+    }
 
-    noBtn.style.top = y + "px";
+    /* DESKTOP */
+    noBtn.addEventListener(
+        "mouseenter",
+        moveNo
+    );
+
+    /* MOBILE */
+    noBtn.addEventListener(
+        "touchstart",
+        function(e){
+
+            e.preventDefault();
+
+            moveNo();
+        }
+    );
+
+    /* EXTRA SAFETY */
+    noBtn.addEventListener(
+        "click",
+        function(e){
+
+            e.preventDefault();
+
+            moveNo();
+        }
+    );
 }
 
 /* =========================
@@ -411,21 +431,24 @@ function startFireworks(){
 
     fireworksInterval = setInterval(() => {
 
-        for(let i = 0; i < 10; i++){
+        for(let i=0;i<10;i++){
 
             let s = document.createElement("div");
 
             s.className = "spark";
 
             const colors = [
+
                 "#ff4d6d",
                 "#ffd60a",
                 "#00e5ff",
                 "#ffffff",
                 "#ff9e00"
+
             ];
 
             s.style.background =
+
                 colors[
                     Math.floor(
                         Math.random() * colors.length
@@ -444,10 +467,10 @@ function startFireworks(){
 
                 s.remove();
 
-            }, 1000);
+            },1000);
         }
 
-    }, 300);
+    },300);
 }
 
 /* =========================
@@ -466,10 +489,10 @@ setInterval(() => {
         Math.random() * 100 + "vw";
 
     heart.style.fontSize =
-        (20 + Math.random() * 30) + "px";
+        (20 + Math.random()*30) + "px";
 
     heart.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
+        (4 + Math.random()*4) + "s";
 
     document.body.appendChild(heart);
 
@@ -477,9 +500,9 @@ setInterval(() => {
 
         heart.remove();
 
-    }, 7000);
+    },7000);
 
-}, 250);
+},250);
 
 /* =========================
    FLOATING ROSES
@@ -498,8 +521,11 @@ function startRoses(){
         rose.style.left =
             Math.random() * 100 + "vw";
 
+        rose.style.fontSize =
+            (20 + Math.random()*20) + "px";
+
         rose.style.animationDuration =
-            (5 + Math.random() * 3) + "s";
+            (5 + Math.random()*3) + "s";
 
         document.body.appendChild(rose);
 
@@ -507,9 +533,9 @@ function startRoses(){
 
             rose.remove();
 
-        }, 7000);
+        },7000);
 
-    }, 400);
+    },400);
 }
 
 </script>
