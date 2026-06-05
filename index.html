@@ -1,195 +1,519 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Something Special ❤️</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    color:white;
+    position:relative;
 }
 
 /* MAIN CARD */
-.card {
-    text-align: center;
-    background: rgba(255,255,255,0.12);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
-    width: 90%;
-    max-width: 500px;
+
+.card{
+    width:90%;
+    max-width:520px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.12);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:0 0 25px rgba(255,255,255,0.2);
+
+    z-index:10;
+
+    transition:all 0.5s ease;
 }
 
-/* BUTTONS */
-button {
-    padding: 12px 22px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
+/* TEXT */
+
+h1{
+    margin-bottom:15px;
+    font-size:32px;
+
+    text-shadow:0 0 10px #ff4d6d;
 }
 
-.yes {
-    background: #00c853;
-    color: white;
-}
-
-.no {
-    background: #d50000;
-    color: white;
-    position: relative;
-}
-
-/* BIG ANIMATIONS */
-.big {
-    font-size: 26px;
-    text-shadow: 0 0 10px #ff4d6d;
-}
-
-/* FLOATING OBJECTS */
-.heart, .rose, .flower {
-    position: absolute;
-    font-size: 28px;
-    animation: floatUp 7s linear infinite;
-    opacity: 0.8;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(100vh); }
-    100% { transform: translateY(-10vh); }
-}
-
-/* FIREWORKS */
-.spark {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: gold;
-    border-radius: 50%;
-    animation: boom 1s infinite;
-}
-
-@keyframes boom {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
+p{
+    margin-top:10px;
+    font-size:18px;
+    line-height:1.5;
 }
 
 /* CAT */
-.cat {
-    font-size: 40px;
+
+.cat{
+    font-size:55px;
+    margin-bottom:10px;
 }
+
+/* BUTTONS */
+
+button{
+    padding:13px 24px;
+
+    border:none;
+    border-radius:25px;
+
+    margin:12px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.yes{
+    background:#00c853;
+    color:white;
+
+    box-shadow:0 0 15px rgba(0,200,83,0.6);
+}
+
+.no{
+    background:#d50000;
+    color:white;
+
+    position:relative;
+
+    box-shadow:0 0 15px rgba(213,0,0,0.5);
+}
+
+/* FLOATING ITEMS */
+
+.heart,
+.rose,
+.flower{
+    position:absolute;
+
+    animation:floatUp linear forwards;
+
+    pointer-events:none;
+}
+
+/* HEARTS */
+
+.heart{
+    color:#ff4d6d;
+}
+
+/* ROSES */
+
+.rose{
+    font-size:30px;
+}
+
+/* FLOWERS */
+
+.flower{
+    font-size:26px;
+}
+
+/* FLOAT ANIMATION */
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(100vh) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-15vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* FIREWORK SPARKS */
+
+.spark{
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    animation:boom 1s linear forwards;
+
+    pointer-events:none;
+}
+
+@keyframes boom{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(4);
+        opacity:0;
+    }
+}
+
+/* GLOWING MESSAGE */
+
+.final-message{
+    animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow:0 0 10px #ff4d6d;
+    }
+
+    to{
+        text-shadow:
+            0 0 20px #ff4d6d,
+            0 0 35px #ff4d6d;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    h1{
+        font-size:25px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    button{
+        padding:12px 20px;
+        font-size:15px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
+
+<audio id="song" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN CARD -->
+
 <div class="card" id="box">
 
     <div class="cat">😿</div>
-    <h1 class="big">💖 I have something special to tell you 💖</h1>
 
-    <button class="yes" onclick="step1()">Tap to Begin</button>
+    <h1>💖 I Have Something Special To Tell You 💖</h1>
+
+    <p>
+        Someone wants to say something from the heart...
+    </p>
+
+    <button class="yes" onclick="startExperience()">
+        Tap To Begin ❤️
+    </button>
 
 </div>
 
 <script>
 
-let noBtn;
+/* =========================
+   MUSIC
+========================= */
 
-/* STEP 1 */
-function step1() {
+function startMusic(){
+
+    const music = document.getElementById("song");
+
+    music.play().catch(() => {
+        console.log("Autoplay blocked");
+    });
+}
+
+/* =========================
+   START EXPERIENCE
+========================= */
+
+function startExperience(){
+
+    startMusic();
+
+    step1();
+}
+
+/* =========================
+   STEP 1
+========================= */
+
+function step1(){
+
     document.getElementById("box").innerHTML = `
-        <div class="cat">😿</div>
-        <h1>💭 Be honest with me...</h1>
+
+        <div class="cat">🥺</div>
+
+        <h1>💭 Be Honest With Me...</h1>
+
         <p>Do you trust me?</p>
 
-        <button class="yes" onclick="step2()">YES 💖</button>
-        <button class="no" id="no1">NO 💔</button>
+        <button class="yes" onclick="step2()">
+            YES 💖
+        </button>
+
+        <button class="no" id="no1">
+            NO 💔
+        </button>
+
     `;
 
     setupNo("no1");
 }
 
-/* STEP 2 */
-function step2() {
-    document.getElementById("box").innerHTML = `
-        <div class="cat">😭</div>
-        <h1>💞 Do you love me?</h1>
+/* =========================
+   STEP 2
+========================= */
 
-        <button class="yes" onclick="finalStep()">YES 💖</button>
-        <button class="no" id="no2">NO 💔</button>
+function step2(){
+
+    document.getElementById("box").innerHTML = `
+
+        <div class="cat">😭</div>
+
+        <h1>💞 Do You Love Me?</h1>
+
+        <p>
+            Think carefully before answering 😳
+        </p>
+
+        <button class="yes" onclick="finalStep()">
+            YES 💖
+        </button>
+
+        <button class="no" id="no2">
+            NO 💔
+        </button>
+
     `;
 
     setupNo("no2");
 }
 
-/* FINAL */
-function finalStep() {
+/* =========================
+   FINAL STEP
+========================= */
+
+function finalStep(){
+
     document.getElementById("box").innerHTML = `
-        <div class="cat">😭💖</div>
-        <h1>💖 I knew it...</h1>
-        <p>I love you moreeee 🫶</p>
-        <p>Please be mine forever ❤️</p>
+
+        <div class="cat">💖😭💖</div>
+
+        <h1 class="final-message">
+            💖 I Knew It 💖
+        </h1>
+
+        <p>
+            I love you more than words can explain 🫶
+        </p>
+
+        <p>
+            Please stay with me forever ❤️
+        </p>
+
     `;
 
     startFireworks();
+
+    startRoses();
 }
 
-/* NO BUTTON LOGIC (ONLY MOVES WHEN INTERACTED) */
-function setupNo(id) {
+/* =========================
+   MOVING NO BUTTON
+========================= */
+
+let noBtn;
+
+function setupNo(id){
+
     noBtn = document.getElementById(id);
 
     noBtn.addEventListener("mouseover", moveNo);
+
     noBtn.addEventListener("click", moveNo);
+
     noBtn.addEventListener("touchstart", moveNo);
 }
 
-function moveNo() {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 100);
+function moveNo(){
+
+    let x =
+        Math.random() *
+        (window.innerWidth - 140);
+
+    let y =
+        Math.random() *
+        (window.innerHeight - 80);
 
     noBtn.style.position = "absolute";
+
     noBtn.style.left = x + "px";
+
     noBtn.style.top = y + "px";
 }
 
-/* 💥 FIREWORKS */
-function startFireworks() {
-    setInterval(() => {
-        for (let i = 0; i < 8; i++) {
+/* =========================
+   FIREWORKS
+========================= */
+
+let fireworksInterval;
+
+function startFireworks(){
+
+    clearInterval(fireworksInterval);
+
+    fireworksInterval = setInterval(() => {
+
+        for(let i = 0; i < 10; i++){
+
             let s = document.createElement("div");
+
             s.className = "spark";
-            s.style.left = Math.random() * 100 + "vw";
-            s.style.top = Math.random() * 100 + "vh";
+
+            const colors = [
+                "#ff4d6d",
+                "#ffd60a",
+                "#00e5ff",
+                "#ffffff",
+                "#ff9e00"
+            ];
+
+            s.style.background =
+                colors[
+                    Math.floor(
+                        Math.random() * colors.length
+                    )
+                ];
+
+            s.style.left =
+                Math.random() * 100 + "vw";
+
+            s.style.top =
+                Math.random() * 100 + "vh";
+
             document.body.appendChild(s);
-            setTimeout(() => s.remove(), 1200);
+
+            setTimeout(() => {
+
+                s.remove();
+
+            }, 1000);
         }
+
     }, 300);
 }
 
-/* 💖 HEARTS + 🌹 ROSES + 🌸 FLOWERS */
+/* =========================
+   FLOATING HEARTS
+========================= */
+
 setInterval(() => {
-    let items = ["💖","💖","🌹","🌸","💘"];
-    let el = document.createElement("div");
-    el.className = "heart";
-    el.innerHTML = items[Math.floor(Math.random()*items.length)];
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = (20 + Math.random()*30) + "px";
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 7000);
+
+    let heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "💖";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (20 + Math.random() * 30) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 7000);
+
 }, 250);
+
+/* =========================
+   FLOATING ROSES
+========================= */
+
+function startRoses(){
+
+    setInterval(() => {
+
+        let rose = document.createElement("div");
+
+        rose.className = "rose";
+
+        rose.innerHTML = "🌹";
+
+        rose.style.left =
+            Math.random() * 100 + "vw";
+
+        rose.style.animationDuration =
+            (5 + Math.random() * 3) + "s";
+
+        document.body.appendChild(rose);
+
+        setTimeout(() => {
+
+            rose.remove();
+
+        }, 7000);
+
+    }, 400);
+}
 
 </script>
 
 </body>
 </html>
+```
