@@ -1,28 +1,19 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Something Special ❤️</title>
+<title>Love Proposal ❤️</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-
-/* =========================
-   BODY
-========================= */
 
 body{
 
@@ -36,7 +27,7 @@ body{
 
     align-items:center;
 
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
     background:linear-gradient(
         135deg,
@@ -50,69 +41,55 @@ body{
     position:relative;
 }
 
-/* =========================
-   CARD
-========================= */
+/* CARD */
 
 .card{
 
     width:90%;
 
-    max-width:520px;
+    max-width:500px;
 
     padding:40px;
 
     text-align:center;
 
-    border-radius:25px;
+    border-radius:20px;
 
-    background:rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.1);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
 
     box-shadow:0 0 25px rgba(255,255,255,0.2);
 
     z-index:5;
-
-    transition:0.5s ease;
 }
 
-/* =========================
-   TEXT
-========================= */
+/* TEXT */
 
 h1{
 
-    margin-bottom:15px;
-
     font-size:32px;
+
+    margin-bottom:15px;
 
     text-shadow:0 0 10px #ff4d6d;
 }
 
 p{
 
-    margin-top:10px;
-
     font-size:18px;
 
-    line-height:1.5;
+    margin-top:10px;
 }
-
-/* =========================
-   CAT
-========================= */
 
 .cat{
 
     font-size:55px;
 
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 button{
 
@@ -130,9 +107,7 @@ button{
 
     margin:12px;
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.3s ease;
+    transition:0.2s;
 }
 
 button:hover{
@@ -140,31 +115,21 @@ button:hover{
     transform:scale(1.08);
 }
 
-/* YES BUTTON */
-
 .yes{
 
     background:#00c853;
 
     color:white;
-
-    box-shadow:0 0 15px rgba(0,200,83,0.5);
 }
-
-/* NO BUTTON */
 
 .no{
 
     background:#d50000;
 
     color:white;
-
-    box-shadow:0 0 15px rgba(213,0,0,0.5);
 }
 
-/* =========================
-   HEARTS / ROSES
-========================= */
+/* FLOATING HEARTS */
 
 .heart,
 .rose{
@@ -175,17 +140,6 @@ button:hover{
 
     animation:floatUp linear forwards;
 }
-
-/* HEART */
-
-.heart{
-
-    color:#ff4d6d;
-}
-
-/* =========================
-   FLOAT ANIMATION
-========================= */
 
 @keyframes floatUp{
 
@@ -208,9 +162,7 @@ button:hover{
     }
 }
 
-/* =========================
-   FIREWORKS
-========================= */
+/* FIREWORKS */
 
 .spark{
 
@@ -242,111 +194,71 @@ button:hover{
     }
 }
 
-/* =========================
-   FINAL GLOW
-========================= */
-
 .final-message{
 
-    animation:glow 1.5s infinite alternate;
+    animation:glow 1s infinite alternate;
 }
 
 @keyframes glow{
 
     from{
-
         text-shadow:0 0 10px #ff4d6d;
     }
 
     to{
-
         text-shadow:
             0 0 20px #ff4d6d,
             0 0 35px #ff4d6d;
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    h1{
-        font-size:25px;
-    }
-
-    p{
-        font-size:16px;
-    }
-
-    button{
-        font-size:15px;
-    }
-}
-
 </style>
+
 </head>
 
 <body>
 
-<!-- =========================
-     MUSIC
-========================= -->
-
 <audio id="song" loop>
-
     <source src="song.mp3" type="audio/mpeg">
-
 </audio>
-
-<!-- =========================
-     CARD
-========================= -->
 
 <div class="card" id="box">
 
-    <div class="cat">😿</div>
+```
+<div class="cat">😿</div>
 
-    <h1>
-        💖 I Have Something Special To Tell You 💖
-    </h1>
+<h1>
+    💖 I Have Something Special To Tell You 💖
+</h1>
 
-    <p>
-        Someone wants to say something from the heart...
-    </p>
+<p>
+    Someone wants to say something...
+</p>
 
-    <button
-        class="yes"
-        onclick="startExperience()">
+<button
+    class="yes"
+    onclick="startExperience()">
 
-        Tap To Begin ❤️
+    Tap To Begin ❤️
 
-    </button>
+</button>
+```
 
 </div>
 
 <script>
 
-/* =========================
-   MUSIC
-========================= */
+/* MUSIC */
 
 function startMusic(){
 
     const music =
         document.getElementById("song");
 
-    music.play().catch(() => {
-
-        console.log("Music autoplay blocked");
-
-    });
+    music.play().catch(() => {});
 }
 
-/* =========================
-   START EXPERIENCE
-========================= */
+/* START */
 
 function startExperience(){
 
@@ -355,9 +267,7 @@ function startExperience(){
     step1();
 }
 
-/* =========================
-   STEP 1
-========================= */
+/* STEP 1 */
 
 function step1(){
 
@@ -383,7 +293,7 @@ function step1(){
 
         <button
             class="no"
-            id="no1">
+            id="noBtn">
 
             NO 💔
 
@@ -391,12 +301,10 @@ function step1(){
 
     `;
 
-    setupNo("no1");
+    setupNo();
 }
 
-/* =========================
-   STEP 2
-========================= */
+/* STEP 2 */
 
 function step2(){
 
@@ -409,7 +317,7 @@ function step2(){
         </h1>
 
         <p>
-            Think carefully before answering 😳
+            Think carefully 😳
         </p>
 
         <button
@@ -422,7 +330,7 @@ function step2(){
 
         <button
             class="no"
-            id="no2">
+            id="noBtn">
 
             NO 💔
 
@@ -430,12 +338,10 @@ function step2(){
 
     `;
 
-    setupNo("no2");
+    setupNo();
 }
 
-/* =========================
-   FINAL STEP
-========================= */
+/* FINAL */
 
 function finalStep(){
 
@@ -448,11 +354,11 @@ function finalStep(){
         </h1>
 
         <p>
-            I love you more than words can explain 🫶
+            I love you so much 🫶
         </p>
 
         <p>
-            Please stay with me forever ❤️
+            Stay mine forever ❤️
         </p>
 
     `;
@@ -462,20 +368,14 @@ function finalStep(){
     startRoses();
 }
 
-/* =========================
-   MOVING NO BUTTON
-========================= */
+/* MOVING NO BUTTON */
 
-function setupNo(id){
+function setupNo(){
 
     const noBtn =
-        document.getElementById(id);
+        document.getElementById("noBtn");
 
-    function moveNo(e){
-
-        e.preventDefault();
-
-        const padding = 20;
+    function moveButton(){
 
         const btnWidth =
             noBtn.offsetWidth;
@@ -486,72 +386,61 @@ function setupNo(id){
         const maxX =
             window.innerWidth -
             btnWidth -
-            padding;
+            20;
 
         const maxY =
             window.innerHeight -
             btnHeight -
-            padding;
+            20;
 
         const randomX =
-            Math.floor(
-                Math.random() * maxX
-            );
+            Math.random() * maxX;
 
         const randomY =
-            Math.floor(
-                Math.random() * maxY
-            );
+            Math.random() * maxY;
 
-        noBtn.style.position = "absolute";
+        noBtn.style.position = "fixed";
 
         noBtn.style.left =
             randomX + "px";
 
         noBtn.style.top =
             randomY + "px";
-
-        noBtn.style.zIndex = "1000";
     }
 
-    /* DESKTOP */
     noBtn.addEventListener(
-        "mouseenter",
-        moveNo
+        "mouseover",
+        moveButton
     );
 
-    /* MOBILE */
     noBtn.addEventListener(
         "touchstart",
-        moveNo
+        moveButton
     );
 
-    /* EXTRA SAFETY */
     noBtn.addEventListener(
         "click",
-        moveNo
+        function(e){
+
+            e.preventDefault();
+
+            moveButton();
+        }
     );
 }
 
-/* =========================
-   FIREWORKS
-========================= */
-
-let fireworksInterval;
+/* FIREWORKS */
 
 function startFireworks(){
 
-    clearInterval(fireworksInterval);
-
-    fireworksInterval =
-        setInterval(() => {
+    setInterval(() => {
 
         for(let i=0;i<10;i++){
 
-            let s =
+            let spark =
                 document.createElement("div");
 
-            s.className = "spark";
+            spark.className = "spark";
 
             const colors = [
 
@@ -563,7 +452,7 @@ function startFireworks(){
 
             ];
 
-            s.style.background =
+            spark.style.background =
 
                 colors[
                     Math.floor(
@@ -572,17 +461,17 @@ function startFireworks(){
                     )
                 ];
 
-            s.style.left =
+            spark.style.left =
                 Math.random() * 100 + "vw";
 
-            s.style.top =
+            spark.style.top =
                 Math.random() * 100 + "vh";
 
-            document.body.appendChild(s);
+            document.body.appendChild(spark);
 
             setTimeout(() => {
 
-                s.remove();
+                spark.remove();
 
             },1000);
         }
@@ -590,9 +479,7 @@ function startFireworks(){
     },300);
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* HEARTS */
 
 setInterval(() => {
 
@@ -622,9 +509,7 @@ setInterval(() => {
 
 },250);
 
-/* =========================
-   FLOATING ROSES
-========================= */
+/* ROSES */
 
 function startRoses(){
 
@@ -661,4 +546,3 @@ function startRoses(){
 
 </body>
 </html>
-```
