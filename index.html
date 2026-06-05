@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,15 +15,11 @@
 }
 
 body{
-
     height:100vh;
-
     overflow:hidden;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     font-family:Arial,sans-serif;
@@ -37,16 +32,13 @@ body{
     );
 
     color:white;
-
     position:relative;
 }
 
 /* CARD */
 
 .card{
-
     width:90%;
-
     max-width:500px;
 
     padding:40px;
@@ -67,32 +59,25 @@ body{
 /* TEXT */
 
 h1{
-
     font-size:32px;
-
     margin-bottom:15px;
 
     text-shadow:0 0 10px #ff4d6d;
 }
 
 p{
-
     font-size:18px;
-
     margin-top:10px;
 }
 
 .cat{
-
     font-size:55px;
-
     margin-bottom:10px;
 }
 
 /* BUTTONS */
 
 button{
-
     padding:13px 24px;
 
     border:none;
@@ -111,29 +96,23 @@ button{
 }
 
 button:hover{
-
     transform:scale(1.08);
 }
 
 .yes{
-
     background:#00c853;
-
     color:white;
 }
 
 .no{
-
     background:#d50000;
-
     color:white;
 }
 
-/* FLOATING HEARTS */
+/* HEARTS & ROSES */
 
 .heart,
 .rose{
-
     position:absolute;
 
     pointer-events:none;
@@ -144,20 +123,12 @@ button:hover{
 @keyframes floatUp{
 
     0%{
-
-        transform:
-            translateY(100vh)
-            rotate(0deg);
-
+        transform:translateY(100vh) rotate(0deg);
         opacity:1;
     }
 
     100%{
-
-        transform:
-            translateY(-15vh)
-            rotate(360deg);
-
+        transform:translateY(-15vh) rotate(360deg);
         opacity:0;
     }
 }
@@ -165,11 +136,9 @@ button:hover{
 /* FIREWORKS */
 
 .spark{
-
     position:absolute;
 
     width:10px;
-
     height:10px;
 
     border-radius:50%;
@@ -180,22 +149,19 @@ button:hover{
 @keyframes boom{
 
     0%{
-
         transform:scale(1);
-
         opacity:1;
     }
 
     100%{
-
         transform:scale(4);
-
         opacity:0;
     }
 }
 
-.final-message{
+/* FINAL GLOW */
 
+.final-message{
     animation:glow 1s infinite alternate;
 }
 
@@ -213,36 +179,37 @@ button:hover{
 }
 
 </style>
-
 </head>
 
 <body>
+
+<!-- MUSIC -->
 
 <audio id="song" loop>
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
+<!-- CARD -->
+
 <div class="card" id="box">
 
-```
-<div class="cat">😿</div>
+    <div class="cat">😿</div>
 
-<h1>
-    💖 I Have Something Special To Tell You 💖
-</h1>
+    <h1>
+        💖 I Have Something Special To Tell You 💖
+    </h1>
 
-<p>
-    Someone wants to say something...
-</p>
+    <p>
+        Someone wants to say something...
+    </p>
 
-<button
-    class="yes"
-    onclick="startExperience()">
+    <button
+        class="yes"
+        onclick="startExperience()">
 
-    Tap To Begin ❤️
+        Tap To Begin ❤️
 
-</button>
-```
+    </button>
 
 </div>
 
@@ -354,11 +321,11 @@ function finalStep(){
         </h1>
 
         <p>
-            I love you so much 🫶
+            I love you more than words can explain 🫶
         </p>
 
         <p>
-            Stay mine forever ❤️
+            Please stay with me forever ❤️
         </p>
 
     `;
@@ -375,7 +342,15 @@ function setupNo(){
     const noBtn =
         document.getElementById("noBtn");
 
+    let moveCount = 0;
+
     function moveButton(){
+
+        if(moveCount >= 12){
+            moveCount = 0;
+        }
+
+        moveCount++;
 
         const btnWidth =
             noBtn.offsetWidth;
@@ -406,18 +381,29 @@ function setupNo(){
 
         noBtn.style.top =
             randomY + "px";
+
+        noBtn.style.transition =
+            "0.15s ease";
     }
 
+    /* DESKTOP */
     noBtn.addEventListener(
-        "mouseover",
+        "mouseenter",
         moveButton
     );
 
+    /* MOBILE */
     noBtn.addEventListener(
         "touchstart",
-        moveButton
+        function(e){
+
+            e.preventDefault();
+
+            moveButton();
+        }
     );
 
+    /* CLICK */
     noBtn.addEventListener(
         "click",
         function(e){
@@ -443,17 +429,14 @@ function startFireworks(){
             spark.className = "spark";
 
             const colors = [
-
                 "#ff4d6d",
                 "#ffd60a",
                 "#00e5ff",
                 "#ffffff",
                 "#ff9e00"
-
             ];
 
             spark.style.background =
-
                 colors[
                     Math.floor(
                         Math.random() *
