@@ -1,8 +1,8 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,74 +10,109 @@
 
 <style>
 
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+/* =========================
+   BODY
+========================= */
+
 body{
-    font-family: Arial, sans-serif;
+
     height:100vh;
+
     overflow:hidden;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
-    background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #0f0c29,
+        #302b63,
+        #24243e
+    );
 
     color:white;
+
     position:relative;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card{
 
     width:90%;
+
     max-width:520px;
-
-    text-align:center;
-
-    background:rgba(255,255,255,0.12);
 
     padding:40px;
 
+    text-align:center;
+
     border-radius:25px;
 
-    backdrop-filter: blur(12px);
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
 
     box-shadow:0 0 25px rgba(255,255,255,0.2);
 
-    z-index:10;
+    z-index:5;
 
     transition:0.5s ease;
 }
 
-/* TEXT */
+/* =========================
+   TEXT
+========================= */
 
 h1{
+
     margin-bottom:15px;
+
     font-size:32px;
 
     text-shadow:0 0 10px #ff4d6d;
 }
 
 p{
+
     margin-top:10px;
+
     font-size:18px;
+
     line-height:1.5;
 }
 
-/* CAT */
+/* =========================
+   CAT
+========================= */
 
 .cat{
+
     font-size:55px;
-    margin-bottom:10px;
+
+    margin-bottom:15px;
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 button{
 
@@ -85,9 +120,7 @@ button{
 
     border:none;
 
-    border-radius:25px;
-
-    margin:12px;
+    border-radius:30px;
 
     font-size:16px;
 
@@ -95,15 +128,19 @@ button{
 
     cursor:pointer;
 
+    margin:12px;
+
     transition:
         transform 0.2s ease,
-        background 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 button:hover{
+
     transform:scale(1.08);
 }
+
+/* YES BUTTON */
 
 .yes{
 
@@ -111,8 +148,10 @@ button:hover{
 
     color:white;
 
-    box-shadow:0 0 15px rgba(0,200,83,0.6);
+    box-shadow:0 0 15px rgba(0,200,83,0.5);
 }
+
+/* NO BUTTON */
 
 .no{
 
@@ -123,7 +162,9 @@ button:hover{
     box-shadow:0 0 15px rgba(213,0,0,0.5);
 }
 
-/* FLOATING ITEMS */
+/* =========================
+   HEARTS / ROSES
+========================= */
 
 .heart,
 .rose{
@@ -132,76 +173,102 @@ button:hover{
 
     pointer-events:none;
 
-    animation: floatUp linear forwards;
+    animation:floatUp linear forwards;
 }
 
+/* HEART */
+
 .heart{
+
     color:#ff4d6d;
 }
 
-/* FLOATING ANIMATION */
+/* =========================
+   FLOAT ANIMATION
+========================= */
 
 @keyframes floatUp{
 
     0%{
-        transform:translateY(100vh) rotate(0deg);
+
+        transform:
+            translateY(100vh)
+            rotate(0deg);
+
         opacity:1;
     }
 
     100%{
-        transform:translateY(-15vh) rotate(360deg);
+
+        transform:
+            translateY(-15vh)
+            rotate(360deg);
+
         opacity:0;
     }
 }
 
-/* FIREWORKS */
+/* =========================
+   FIREWORKS
+========================= */
 
 .spark{
 
     position:absolute;
 
     width:10px;
+
     height:10px;
 
     border-radius:50%;
 
-    animation: boom 1s linear forwards;
+    animation:boom 1s linear forwards;
 }
 
 @keyframes boom{
 
     0%{
+
         transform:scale(1);
+
         opacity:1;
     }
 
     100%{
+
         transform:scale(4);
+
         opacity:0;
     }
 }
 
-/* FINAL GLOW */
+/* =========================
+   FINAL GLOW
+========================= */
 
 .final-message{
 
-    animation: glow 1.5s infinite alternate;
+    animation:glow 1.5s infinite alternate;
 }
 
 @keyframes glow{
 
     from{
+
         text-shadow:0 0 10px #ff4d6d;
     }
 
     to{
+
         text-shadow:
             0 0 20px #ff4d6d,
             0 0 35px #ff4d6d;
     }
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -223,26 +290,38 @@ button:hover{
 
 <body>
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
 <audio id="song" loop>
+
     <source src="song.mp3" type="audio/mpeg">
+
 </audio>
 
-<!-- CARD -->
+<!-- =========================
+     CARD
+========================= -->
 
 <div class="card" id="box">
 
     <div class="cat">😿</div>
 
-    <h1>💖 I Have Something Special To Tell You 💖</h1>
+    <h1>
+        💖 I Have Something Special To Tell You 💖
+    </h1>
 
     <p>
         Someone wants to say something from the heart...
     </p>
 
-    <button class="yes" onclick="startExperience()">
+    <button
+        class="yes"
+        onclick="startExperience()">
+
         Tap To Begin ❤️
+
     </button>
 
 </div>
@@ -255,7 +334,8 @@ button:hover{
 
 function startMusic(){
 
-    const music = document.getElementById("song");
+    const music =
+        document.getElementById("song");
 
     music.play().catch(() => {
 
@@ -285,16 +365,28 @@ function step1(){
 
         <div class="cat">🥺</div>
 
-        <h1>💭 Be Honest With Me...</h1>
+        <h1>
+            💭 Be Honest With Me...
+        </h1>
 
-        <p>Do you trust me?</p>
+        <p>
+            Do you trust me?
+        </p>
 
-        <button class="yes" onclick="step2()">
+        <button
+            class="yes"
+            onclick="step2()">
+
             YES 💖
+
         </button>
 
-        <button class="no" id="no1">
+        <button
+            class="no"
+            id="no1">
+
             NO 💔
+
         </button>
 
     `;
@@ -312,18 +404,28 @@ function step2(){
 
         <div class="cat">😭</div>
 
-        <h1>💞 Do You Love Me?</h1>
+        <h1>
+            💞 Do You Love Me?
+        </h1>
 
         <p>
             Think carefully before answering 😳
         </p>
 
-        <button class="yes" onclick="finalStep()">
+        <button
+            class="yes"
+            onclick="finalStep()">
+
             YES 💖
+
         </button>
 
-        <button class="no" id="no2">
+        <button
+            class="no"
+            id="no2">
+
             NO 💔
+
         </button>
 
     `;
@@ -366,28 +468,50 @@ function finalStep(){
 
 function setupNo(id){
 
-    const noBtn = document.getElementById(id);
+    const noBtn =
+        document.getElementById(id);
 
-    function moveNo(){
+    function moveNo(e){
 
-        const btnWidth = noBtn.offsetWidth;
-        const btnHeight = noBtn.offsetHeight;
+        e.preventDefault();
+
+        const padding = 20;
+
+        const btnWidth =
+            noBtn.offsetWidth;
+
+        const btnHeight =
+            noBtn.offsetHeight;
 
         const maxX =
-            window.innerWidth - btnWidth - 20;
+            window.innerWidth -
+            btnWidth -
+            padding;
 
         const maxY =
-            window.innerHeight - btnHeight - 20;
+            window.innerHeight -
+            btnHeight -
+            padding;
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+        const randomX =
+            Math.floor(
+                Math.random() * maxX
+            );
 
-        noBtn.style.position = "fixed";
+        const randomY =
+            Math.floor(
+                Math.random() * maxY
+            );
 
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
+        noBtn.style.position = "absolute";
 
-        noBtn.style.zIndex = "999";
+        noBtn.style.left =
+            randomX + "px";
+
+        noBtn.style.top =
+            randomY + "px";
+
+        noBtn.style.zIndex = "1000";
     }
 
     /* DESKTOP */
@@ -399,23 +523,13 @@ function setupNo(id){
     /* MOBILE */
     noBtn.addEventListener(
         "touchstart",
-        function(e){
-
-            e.preventDefault();
-
-            moveNo();
-        }
+        moveNo
     );
 
     /* EXTRA SAFETY */
     noBtn.addEventListener(
         "click",
-        function(e){
-
-            e.preventDefault();
-
-            moveNo();
-        }
+        moveNo
     );
 }
 
@@ -429,11 +543,13 @@ function startFireworks(){
 
     clearInterval(fireworksInterval);
 
-    fireworksInterval = setInterval(() => {
+    fireworksInterval =
+        setInterval(() => {
 
         for(let i=0;i<10;i++){
 
-            let s = document.createElement("div");
+            let s =
+                document.createElement("div");
 
             s.className = "spark";
 
@@ -451,7 +567,8 @@ function startFireworks(){
 
                 colors[
                     Math.floor(
-                        Math.random() * colors.length
+                        Math.random() *
+                        colors.length
                     )
                 ];
 
@@ -479,7 +596,8 @@ function startFireworks(){
 
 setInterval(() => {
 
-    let heart = document.createElement("div");
+    let heart =
+        document.createElement("div");
 
     heart.className = "heart";
 
@@ -512,7 +630,8 @@ function startRoses(){
 
     setInterval(() => {
 
-        let rose = document.createElement("div");
+        let rose =
+            document.createElement("div");
 
         rose.className = "rose";
 
